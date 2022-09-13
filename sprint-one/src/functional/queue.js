@@ -12,13 +12,14 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    var elToDel = storage['0'];
+    var memo = storage['0'];
     delete storage['0'];
-    _.each(storage, function(value, key) {
-      storage[Number(key) - 1] = value;
-    });
-    delete storage[someInstance.size() - 1];
-    return elToDel;
+    storage = _.reduce(storage, function(newObj, value, key) {
+      var newKey = Number(key) - 1;
+      newObj[newKey] = value;
+      return newObj;
+    }, {});
+    return memo;
   };
 
   someInstance.size = function() {

@@ -11,9 +11,9 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    var elToPop = storage[someInstance.size() - 1];
+    var memo = storage[someInstance.size() - 1];
     delete storage[someInstance.size() - 1];
-    return elToPop;
+    return memo;
   };
 
   someInstance.size = function() {

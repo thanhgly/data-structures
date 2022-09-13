@@ -13,10 +13,11 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     var memo = storage['0'];
-    delete storage['0'];
     storage = _.reduce(storage, function(newObj, value, key) {
       var newKey = Number(key) - 1;
-      newObj[newKey] = value;
+      if (key !== '0') {
+        newObj[newKey] = value;
+      }
       return newObj;
     }, {});
     return memo;

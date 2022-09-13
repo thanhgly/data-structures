@@ -20,10 +20,11 @@ queueMethods.enqueue = function(value) {
 
 queueMethods.dequeue = function() {
   var memo = this.storage['0'];
-  delete this.storage['0'];
   this.storage = _.reduce(this.storage, function(newObj, value, key) {
     var newKey = Number(key) - 1;
-    newObj[newKey] = value;
+    if (key !== '0') {
+      newObj[newKey] = value;
+    }
     return newObj;
   }, {});
 

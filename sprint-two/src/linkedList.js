@@ -1,22 +1,29 @@
 var LinkedList = function() {
   var list = {};
+  list.storage = {};
   list.head = null;
   list.tail = null;
-  list.storage = {};
 
   list.addToTail = function(value) {
+    // Create node
     var node = Node(value);
     var size = Object.keys(list.storage).length;
+
+    // If list not empty, add to tail
     if (size >= 1) {
-      list.storage[size - 1].next = value;
+      // Add new node to tail, get prev element and set prev.next to new node
+      console.log(list.storage[size]);
+      var prev = list.storage[size - 1];
+      prev.next = value;
     }
+
     list.storage[size] = node;
     list.head = list.storage[0];
     list.tail = list.storage[size];
   };
 
   list.removeHead = function() {
-    var temp = list.head;
+    var temp = list.storage[0].value;
     list.storage = _.reduce(list.storage, function(memo, value, key) {
       if (key > 0) {
         memo[key - 1] = value;
@@ -24,14 +31,17 @@ var LinkedList = function() {
       return memo;
     }, {});
     list.head = list.storage[0];
-    list.tail = list.storage[Object.keys(list.storage).length];
-    return temp.value;
+    console.log(list);
+    return temp;
   };
 
   list.contains = function(target) {
-    return _.some(list.storage, function(node) {
-      return node.value === target;
-    });
+    for (var key in list.storage) {
+      if (list.storage[key].value === target) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return list;

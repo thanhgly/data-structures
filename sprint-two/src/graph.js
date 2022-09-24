@@ -66,4 +66,5 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * Linear access time, Constant insertion time, Quadratic removal time
  */

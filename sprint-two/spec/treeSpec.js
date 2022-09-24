@@ -62,6 +62,5 @@ describe('tree', function() {
     tree.addChild(5);
     tree.removeFromParent(5);
     expect(tree.contains(5)).to.equal(false);
-    console.log(tree.children);
   });
 });

@@ -68,4 +68,12 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should be undirected graph', function() {
+    graph.addNode(4);
+    graph.addNode(9);
+    graph.addEdge(4, 9);
+    expect(graph.hasEdge(4, 9)).to.equal(true);
+    expect(graph.hasEdge(9, 4)).to.equal(true);
+  });
 });

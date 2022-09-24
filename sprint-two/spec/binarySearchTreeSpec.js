@@ -37,4 +37,15 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should traverse the entire depth of the tree', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(11);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(12);
+    expect(binarySearchTree.contains(15)).to.equal(true);
+  });
 });

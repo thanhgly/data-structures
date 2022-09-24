@@ -39,27 +39,18 @@ methods.insert = function(value) {
 methods.contains = function(value) {
   // if this.value matches value return true
   var current = this;
-  if (current.value === value) {
-    return true;
 
-  // else if this.value greater than value, direction = left (else right)
-  } else if (current.value > value) {
-
-    // check if this.(direction).value matches value
-    if (current.left.value === value) {
+  while (current !== null) {
+    if (current.value === value) {
       return true;
-    } else {
+    } else if (current.value > value) {
       current = current.left;
-    }
-  } else {
-    if (current.right.value === value) {
-      return true;
     } else {
       current = current.right;
     }
   }
-  return false;
 
+  return false;
 };
 
 methods.depthFirstLog = function(cb) {
@@ -77,5 +68,3 @@ methods.depthFirstLog = function(cb) {
  * Complexity: What is the time complexity of the above functions?
  * Logarithmic: O(log n)
  */
-
-

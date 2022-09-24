@@ -21,7 +21,6 @@ Graph.prototype.removeNode = function(node) {
   for (var key in this.nodes) {
     for (var i = 0; i < this.nodes[key].length; i++) {
       if (this.nodes[key][i] === node) {
-        console.log(this.nodes[key]);
         this.nodes[key].splice(i, 1);
       }
     }

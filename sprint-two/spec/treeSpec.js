@@ -51,4 +51,17 @@ describe('tree', function() {
     };
     expect(checkChildren()).to.equal(true);
   });
+
+  it('should return the parent node or null when there is no node', function() {
+    tree.addChild(3);
+    expect(tree.children[0].parent).to.equal(tree);
+  });
+
+  it('should disassociate the tree from its parent when "removeFromParent" was called', function() {
+    tree.addChild(8);
+    tree.addChild(5);
+    tree.removeFromParent(5);
+    expect(tree.contains(5)).to.equal(false);
+    console.log(tree.children);
+  });
 });

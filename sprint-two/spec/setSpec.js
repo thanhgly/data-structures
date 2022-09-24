@@ -24,4 +24,20 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not contain duplicated value', function() {
+    set.add('Thanh Ly');
+    set.add('Thanh Ly');
+    // console.log(set);
+    var count = function(value) {
+      var total = 0;
+      _.each(set._storage, function(item) {
+        // console.log(item);
+        if (item === value) {
+          total++;
+        }
+      });
+      return total;
+    };
+    expect(count('Thanh Ly')).to.equal(1);
+  });
 });

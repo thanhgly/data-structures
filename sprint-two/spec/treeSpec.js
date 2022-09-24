@@ -41,4 +41,14 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should add children as subtree', function() {
+    tree.addChild(8);
+    var checkChildren = function() {
+      if (tree.children[0].hasOwnProperty('addChild')) {
+        return true;
+      }
+      return false;
+    };
+    expect(checkChildren()).to.equal(true);
+  });
 });
